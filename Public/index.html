@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petwatch - Red de Cuidado Universitario</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img class="logo-icon" src="Fotos/a2298e38-0c71-4fe7-8703-a5e71f74640e.png">
+            <span class="logo-text">PETWATCH</span>
+        </div>
+        <nav>
+            <a onclick="openModal('modal-funcionamiento')">Cómo funciona</a>
+            <a onclick="openModal('modal-mapa')">Mapa de Riesgo</a>
+            <a onclick="openModal('modal-reportar')">Reportar</a>
+            <a onclick="openModal('modal-beta-info')" class="btn-beta">Acceso Beta UPN</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="left-column">
+            <section class="hero-section">
+                <h1>Tu seguridad no termina al salir de clase.</h1>
+                <p>Anticípate a zonas de riesgo y jaurías en tiempo real. La app diseñada por y para estudiantes de la UPN que transitan en horario nocturno.</p>
+            </section>
+
+            <section class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">📍</span>
+                    <div class="feature-text">
+                        <h3>Geolocalización Activa</h3>
+                        <p>Geolocalización precisa en tiempo real de notificaciones de incidentes.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">👥</span>
+                    <div class="feature-text">
+                        <h3>Validación de Comunidad</h3>
+                        <p>Informes validados por la propia comunidad estudiantil de la UPN en Cajamarca.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🔔</span>
+                    <div class="feature-text">
+                        <h3>Alertas Proactivas</h3>
+                        <p>Notificaciones de alertas sobre jaurías peligrosas que merodean en horarios nocturnos.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="cta-card">
+            <h2>Sé parte de la primera red de cuidado universitario.</h2>
+            
+            <form id="leadForm" onsubmit="enviarFormulario(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <input type="email" id="form-email" class="form-control" placeholder="Correo Institucional (@upn.pe)" required>
+                    </div>
+                    <div class="form-group">
+                        <select id="form-campus" class="form-control" required>
+                            <option value="" disabled selected>Selecciona tu Campus</option>
+                            <option value="Cajamarca">Cajamarca</option>
+                            <option value="Los Olivos">Los Olivos</option>
+                            <option value="Breña">Breña</option>
+                            <option value="San Juan">San Juan</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="form-horario" class="form-control" placeholder="Horario de salida habitual (ej. 10:00 PM)" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Quiero Acceso Anticipado</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <div id="modal-funcionamiento" class="modal-overlay" onclick="closeModal(event, 'modal-funcionamiento')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="document.getElementById('modal-funcionamiento').classList.remove('active')">✕</button>
+            <h2>¿Cómo funciona Petwatch?</h2>
+            <p><strong>1. Reporte Inmediato:</strong> Si divisas una jauría agresiva, un animal herido o una zona sin iluminación con incidentes al salir de la UPN, abres la app y envías una alerta en 2 clics.</p>
+            <p><strong>2. Alerta Comunitaria:</strong> El sistema geolocaliza el reporte y despacha una notificación push automática a todos los estudiantes, docentes y personal que se encuentren en un radio de 500 metros o tengan rutas concurrentes en ese horario.</p>
+            <p><strong>3. Validación y Filtro:</strong> Otros usuarios cercanos confirman o actualizan el estado de la alerta para evitar falsas alarmas, manteniendo el mapa limpio, confiable y actualizado.</p>
+        </div>
+    </div>
+
+    <div id="modal-mapa" class="modal-overlay" onclick="closeModal(event, 'modal-mapa')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="document.getElementById('modal-mapa').classList.remove('active')">✕</button>
+            <h2>Mapa de Riesgo en Vivo</h2>
+            <p>Visualiza los puntos críticos de tránsito alrededor del campus actualizados de forma colaborativa por la comunidad universitaria.</p>
+            <div class="simulated-mini-map">
+                [📍 Vista previa del mapa dinámico de calor]
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-reportar" class="modal-overlay" onclick="closeModal(event, 'modal-reportar')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="document.getElementById('modal-reportar').classList.remove('active')">✕</button>
+            <h2>Módulo de Alerta Temprana</h2>
+            <p>En la aplicación móvil, este botón te permitirá reportar de forma anónima o identificada tres tipos de eventos clave:</p>
+            <p>🚨 <strong>Animal Agresivo / Jauría:</strong> Alerta inmediata para desviar rutas de caminata nocturna.</p>
+            <p>🐾 <strong>Masbota perdida / Abandonada:</strong> Coordinación directa con refugios aliados de la zona.</p>
+            <p>⚠️ <strong>Punto Crítico:</strong> Esquinas con incidentes recurrentes para alertar al serenazgo.</p>
+        </div>
+    </div>
+
+    <div id="modal-beta-info" class="modal-overlay" onclick="closeModal(event, 'modal-beta-info')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="document.getElementById('modal-beta-info').classList.remove('active')">✕</button>
+            <h2>Programa de Accesos Beta</h2>
+            <p>Estamos priorizando el despliegue inicial en las sedes con mayor afluencia nocturna en zonas periféricas. Al registrar tus datos en el formulario de la derecha, ingresas directo al pipeline de la lista de espera oficial.</p>
+        </div>
+    </div>
+
+    <div id="modal-contacto" class="modal-overlay" onclick="closeModal(event, 'modal-contacto')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="document.getElementById('modal-contacto').classList.remove('active')">✕</button>
+            <h2>Alianzas Estratégicas</h2>
+            <p>Si eres representante de una Municipalidad, Clínica Veterinaria o Refugio local y deseas integrar tus alertas o base de datos con nuestra red, escríbenos a nuestro canal institucional:</p>
+            <p style="font-weight: bold; font-size: 16px; color: #0d5c3a; text-align: center; margin-top: 15px;">soporte@petwatch.app</p>
+        </div>
+    </div>
+
+    <footer>
+        Para aliados (Municipios, Veterinarias): <a onclick="openModal('modal-contacto')">Contáctanos aquí</a>
+    </footer>
+
+</body>
+<script src="index.js"></script>
+</html>
